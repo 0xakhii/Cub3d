@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:36:24 by ojamal            #+#    #+#             */
-/*   Updated: 2023/09/15 12:04:52 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:46:46 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,23 @@ void	map_printing(t_map *map)
 	printf("Floor Color: %s\n", map->f_color);
 	printf("Ceiling Color: %s\n", map->c_color);
 	i = 0;
-	while (map->map_2d[i])
+	printf("\nmap with x:\n\n");
+	while (map->map_clone[i])
 	{
 		if (i > 9)
-			printf("Map Line %d:  %s\n", i, map->map_2d[i]);
+			printf("Map Line %d:  %s\n", i, map->map_clone[i]);
 		else
-			printf("Map Line %d:   %s\n", i, map->map_2d[i]);
+			printf("Map Line %d:   %s\n", i, map->map_clone[i]);
+		i++;
+	}
+	printf("\n\nmap without x:\n\n");
+	i = 0;
+	while (map->map[i])
+	{
+		if (i > 9)
+			printf("Map Line %d:  %s\n", i, map->map[i]);
+		else
+			printf("Map Line %d:   %s\n", i, map->map[i]);
 		i++;
 	}
 }
@@ -59,25 +70,25 @@ void	fill_x(int *i, int *k, t_map *map, char **str)
 
 	while ((*i) < map->map_len)
 	{
-		map->map_2d[(*i) + 1] = malloc(sizeof(char) * (map->max_line + 3));
-		map->map_2d[(*i) + 1][0] = 'x';
+		map->map_clone[(*i) + 1] = malloc(sizeof(char) * (map->max_line + 3));
+		map->map_clone[(*i) + 1][0] = 'x';
 		j = 0;
 		(*k) = 1;
 		while (str[(*i)][j])
 		{
 			if (str[(*i)][j] == ' ')
-				map->map_2d[(*i) + 1][(*k)] = 'x';
+				map->map_clone[(*i) + 1][(*k)] = 'x';
 			else
-				map->map_2d[(*i) + 1][(*k)] = str[(*i)][j];
+				map->map_clone[(*i) + 1][(*k)] = str[(*i)][j];
 			j++;
 			(*k)++;
 		}
 		while ((*k) <= map->max_line + 1)
 		{
-			map->map_2d[(*i) + 1][(*k)] = 'x';
+			map->map_clone[(*i) + 1][(*k)] = 'x';
 			(*k)++;
 		}
-		map->map_2d[(*i) + 1][(*k)] = '\0';
+		map->map_clone[(*i) + 1][(*k)] = '\0';
 		(*i)++;
 	}
 }
@@ -101,22 +112,22 @@ void	get_map(char **str, t_map *map)
 	k = 0;
 	map->max_line = find_biggest_line(str);
 	map->map_len = map_len(str);
-	map->map_2d = (char **)malloc(sizeof(char *) * (map->map_len + 3));
-	map->map_2d[0] = (char *)malloc(sizeof(char) * (map->max_line + 3));
+	map->map_clone = (char **)malloc(sizeof(char *) * (map->map_len + 3));
+	map->map_clone[0] = (char *)malloc(sizeof(char) * (map->max_line + 3));
 	while (k <= map->max_line + 1)
 	{
-		map->map_2d[0][k] = 'x';
+		map->map_clone[0][k] = 'x';
 		k++;
 	}
-	map->map_2d[0][k] = '\0';
+	map->map_clone[0][k] = '\0';
 	fill_x(&i, &k, map, str);
-	map->map_2d[i + 1] = (char *)malloc(sizeof(char) * (map->max_line + 3));
+	map->map_clone[i + 1] = (char *)malloc(sizeof(char) * (map->max_line + 3));
 	k = 0;
 	while (k <= map->max_line + 1)
 	{
-		map->map_2d[i + 1][k] = 'x';
+		map->map_clone[i + 1][k] = 'x';
 		k++;
 	}
-	map->map_2d[i + 1][k] = '\0';
-	map->map_2d[i + 2] = NULL;
+	map->map_clone[i + 1][k] = '\0';
+	map->map_clone[i + 2] = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/09/14 12:43:59 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/10 02:15:23 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	free_map(t_map **map)
 	free((*map)->f_color);
 	free((*map)->c_color);
 	i = 0;
-	while ((*map)->map_2d[i])
-		free((*map)->map_2d[i++]);
-	free((*map)->map_2d);
+	while ((*map)->map_clone[i])
+		free((*map)->map_clone[i++]);
+	free((*map)->map_clone);
 }
 
 int	main(int ac, char **av)
@@ -98,7 +98,7 @@ int	main(int ac, char **av)
 			}
 			map_fill(map->map, map);
 			map_check(map);
-			map_printing(map);
+			// map_printing(map);
 		}
 		free(map);
 	}

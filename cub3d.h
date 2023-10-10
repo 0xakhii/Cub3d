@@ -18,7 +18,7 @@ typedef struct s_map
 	char	*line;
 	char	*get_line;
 	char	**map;
-	char	**map_2d;
+	char	**map_clone;
 	char	*n_path;
 	char	*e_path;
 	char	*w_path;

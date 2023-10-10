@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 03:02:46 by ojamal            #+#    #+#             */
-/*   Updated: 2023/09/14 12:47:21 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:44:44 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	map_fill(char **str, t_map *map)
 		j = 0;
 		get_diretions(map, str, &i, j);
 		get_colors(str, map, &i, j);
+		map->map = &str[i];
 		get_map(&str[i], map);
 		break ;
 	}
