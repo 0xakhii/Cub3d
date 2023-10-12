@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@$(CC)  $(CFLAGS) $(OBJ) $(IMAC_FLAGS) -o $(NAME)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LINUX_FLAGS) -o $(NAME)
 
 clean:
 	@make -C libft clean
