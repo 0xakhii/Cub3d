@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/10 02:15:23 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/11 23:39:22 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int ac, char **av)
 			}
 			map_fill(map->map, map);
 			map_check(map);
-			// map_printing(map);
+			map_printing(map);
 		}
 		free(map);
 	}

@@ -30,7 +30,7 @@ typedef struct s_map
 }	t_map;
 
 void	map_fill(char **str, t_map *map);
-void	map_check(t_map *map);
+int		map_check(t_map *map);
 void	map_printing(t_map *map);
 void	get_map(char **str, t_map *map);
 void	free_str(char **str);
