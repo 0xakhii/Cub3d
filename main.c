@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhi <akhi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/12 20:15:53 by akhi             ###   ########.fr       */
+/*   Updated: 2023/10/13 03:41:52 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_filename(char *str)
 				return (1);
 			}
 		}
-		else
+		else if (!str[i + 1])
 			return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid map name\n",
 				2), 1);
 		i++;
