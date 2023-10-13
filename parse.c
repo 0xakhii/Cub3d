@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhi <akhi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 03:02:46 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/13 07:02:42 by akhi             ###   ########.fr       */
+/*   Updated: 2023/10/13 07:30:59 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	directions(t_map *map, char **str, int *i, int j)
+{
+	if (!ft_strncmp(str[(*i)], "NO", 2))
+		{
+		while (str[(*i)] && str[(*i)][j++] != '.')
+		map->n_path = ft_strdup(str[(*i)] + j);
+	}
+	else if (!ft_strncmp(str[(*i)], "SO", 2))
+	{
+		while (str[(*i)] && str[(*i)][j++] != '.')
+		map->s_path = ft_strdup(str[(*i)] + j);
+	}
+	else if (!ft_strncmp(str[(*i)], "WE", 2))
+	{
+		while (str[(*i)] && str[(*i)][j++] != '.')
+		map->w_path = ft_strdup(str[(*i)] + j);
+	}
+	else if (!ft_strncmp(str[(*i)], "EA", 2))
+	{
+		while (str[(*i)] && str[(*i)][j++] != '.')
+		map->e_path = ft_strdup(str[(*i)] + j);
+	}
+}
 
 void	get_diretions(t_map *map, char **str, int *i, int j)
 {
@@ -18,26 +42,7 @@ void	get_diretions(t_map *map, char **str, int *i, int j)
 		|| !ft_strncmp(str[(*i)], "WE", 2) || !ft_strncmp(str[(*i)], "EA", 2))
 	{
 		j = 0;
-		if (!ft_strncmp(str[(*i)], "NO", 2))
-		{
-			while (str[(*i)] && str[(*i)][j++] != '.')
-			map->n_path = ft_strdup(str[(*i)] + j);
-		}
-		else if (!ft_strncmp(str[(*i)], "SO", 2))
-		{
-			while (str[(*i)] && str[(*i)][j++] != '.')
-			map->s_path = ft_strdup(str[(*i)] + j);
-		}
-		else if (!ft_strncmp(str[(*i)], "WE", 2))
-		{
-			while (str[(*i)] && str[(*i)][j++] != '.')
-			map->w_path = ft_strdup(str[(*i)] + j);
-		}
-		else if (!ft_strncmp(str[(*i)], "EA", 2))
-		{
-			while (str[(*i)] && str[(*i)][j++] != '.')
-			map->e_path = ft_strdup(str[(*i)] + j);
-		}
+		directions(map, str, i, j);
 		(*i)++;
 	}
 }
