@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akhi <akhi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 23:28:31 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/11 23:38:58 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/13 07:09:21 by akhi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_for_colors(t_map *map)
 	return (0);
 }
 
-int	check_charset(char charset, char *str)
+int	check_charset(t_map *map, char charset, char *str)
 {
 	int	i;
 
@@ -48,7 +48,12 @@ int	check_charset(char charset, char *str)
 	while (str[i])
 	{
 		if (str[i] == charset || charset == '\t')
+		{
+			if (charset == 'N' || charset == 'S'
+				|| charset == 'E' || charset == 'W')
+					map->player++;
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -61,18 +66,21 @@ int	check_chars(t_map *map)
 
 	j = 0;
 	i = 0;
+	map->player = 0;
 	while(map->map[i])
 	{
 		j = 0;
 		while(map->map[i][j])
 		{
-			if (!check_charset(map->map[i][j], "01NSEW "))
+			if (!check_charset(map, map->map[i][j], "01NSEW "))
 				return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mInvalid charset", 2),
 					1);
 			j++;
 		}
 		i++;
 	}
+	if (map->player != 1)
+		return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mInvalid player", 2), 1);
 	return (0);
 }
 
@@ -111,7 +119,7 @@ int	map_check(t_map *map)
 
 	i = 0;
 	j = 0;
-	if (check_chars(map) || check_for_colors(map) || check_for_textures(map))
+	if (check_for_textures(map) || check_for_colors(map) || check_chars(map))
 		return (1);
 	while(map->map_clone[i])
 	{

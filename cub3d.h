@@ -25,6 +25,7 @@ typedef struct s_map
 	char	*s_path;
 	char	*f_color;
 	char	*c_color;
+	int		player;
 	int		max_line;
 	int		map_len;
 }	t_map;

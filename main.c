@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojamal <ojamal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akhi <akhi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/13 03:41:52 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/13 07:19:34 by akhi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,24 @@ t_map	*read_map(int fd, t_map *map)
 
 void	free_map(t_map **map)
 {
-	int	i;
-
-	i = 0;
 	free((*map)->n_path);
 	free((*map)->e_path);
 	free((*map)->w_path);
 	free((*map)->s_path);
 	free((*map)->f_color);
 	free((*map)->c_color);
-	i = 0;
-	while ((*map)->map_clone[i])
-		free((*map)->map_clone[i++]);
-	free((*map)->map_clone);
+	free_str((*map)->map_clone);
+	free(*map);
+}
+
+void	map_init(t_map *map)
+{
+	map->c_color = NULL;
+	map->f_color = NULL;
+	map->e_path = NULL;
+	map->w_path = NULL;
+	map->s_path = NULL;
+	map->n_path = NULL;
 }
 
 int	main(int ac, char **av)
@@ -99,13 +104,18 @@ int	main(int ac, char **av)
 				free(map);
 				return (1);
 			}
+			map_init(map);
 			map_fill(map->map, map);
-			map_check(map);
+			if (map_check(map))
+			{
+				free_map(&map);
+				return (1);
+			}
 			map_printing(map);
 		}
-		free(map);
 	}
 	else
 		ft_putstr_fd("\033[1;31mCube3D:\033[0;0m ./cub3d <map_path>\n", 2);
+	free_map(&map);
 	return (0);
 }
