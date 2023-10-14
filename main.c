@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhi <akhi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/13 07:19:34 by akhi             ###   ########.fr       */
+/*   Updated: 2023/10/14 01:48:05 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_filename(char *str)
 		if (str[i] == '.')
 		{
 			if (!ft_strcmp(&str[i], ".cub"))
-				return (0);
+				return (1);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid map name\n",
@@ -35,7 +35,7 @@ int	check_filename(char *str)
 				2), 1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 t_map	*read_map(int fd, t_map *map)
@@ -107,7 +107,7 @@ int	main(int ac, char **av)
 			map_init(map);
 			map_fill(map->map, map);
 			if (map_check(map))
-			{
+			{	
 				free_map(&map);
 				return (1);
 			}
