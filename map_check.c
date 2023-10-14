@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 23:28:31 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/14 01:50:16 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/14 01:57:41 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ int	map_check(t_map *map)
 
 	i = 0;
 	j = 0;
-	if (check_for_textures(map) || check_for_colors(map) || check_chars(map))
+	if (check_for_textures(map) || check_directions(map)
+		|| check_for_colors(map) || check_chars(map))
 		return (1);
 	while(map->map_clone[i])
 	{

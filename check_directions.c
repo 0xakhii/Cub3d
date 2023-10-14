@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 00:00:21 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/14 01:49:46 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/14 01:58:08 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int check_east(t_map *map, int i)
 				return (1);
 			else
 			{
-				ft_putstr_fd("\033[1;31mCube3D 2:\033[0;0m Invalid east texture\n",
+				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid east texture\n",
 					2);
 				return (1);
 			}

@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/14 01:48:05 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/14 01:56:57 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_filename(char *str)
 		if (str[i] == '.')
 		{
 			if (!ft_strcmp(&str[i], ".cub"))
-				return (1);
+				return (0);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid map name\n",
