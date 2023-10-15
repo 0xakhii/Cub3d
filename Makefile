@@ -5,7 +5,7 @@ NAME        = cub3D
 LIBFT_NAME  = libft.a
 
 SRCS        =   get_next_line/get_next_line.c get_next_line/get_next_line_utils.c main.c parse.c\
-	utils.c map_check.c check_directions.c
+	utils.c map_check.c check_directions.c check_colors.c
 
 OBJ         = $(SRCS:.c=.o)
 
@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@$(CC)  $(CFLAGS) $(OBJ) $(LINUX_FLAGS) -o $(NAME)
+	@$(CC)  $(CFLAGS) $(OBJ) $(IMAC_FLAGS) -o $(NAME)
 
 clean:
 	@make -C libft clean

@@ -40,4 +40,6 @@ int check_east(t_map *map, int i);
 int check_north(t_map *map, int i);
 int check_south(t_map *map, int i);
 int	check_directions(t_map *map);
+int check_c_color(t_map *map);
+int check_f_color(t_map *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 00:00:21 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/14 01:58:08 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/14 23:37:04 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ int check_north(t_map *map, int i)
 		i++;
 	while(map->n_path[i])
 	{
-		if (map->n_path[i] == '.')
+		if (map->n_path[i] == '.' && ft_isalpha(map->n_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->n_path[i], ".xpm"))
 				return (1);
-			else if (map->n_path[i] == ' ' || map->n_path[i] == '\t')
-				return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid north texture\n",
-					2), 1);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid north texture\n",
@@ -33,6 +30,9 @@ int check_north(t_map *map, int i)
 				return (1);
 			}
 		}
+		else if (map->n_path[i] == ' ' || map->n_path[i] == '\t')
+			return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid north texture\n",
+				2), 1);
         else if (!map->n_path[i + 1])
             return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid north texture\n",
                 2), 1);
@@ -47,13 +47,10 @@ int check_south(t_map *map, int i)
 		i++;
 	while(map->s_path[i])
 	{
-		if (map->s_path[i] == '.')
+		if (map->s_path[i] == '.' && ft_isalpha(map->s_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->s_path[i], ".xpm"))
 				return (1);
-			else if (map->s_path[i] == ' ' || map->s_path[i] == '\t')
-				return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid south texture\n",
-					2), 1);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid south texture\n",
@@ -61,6 +58,9 @@ int check_south(t_map *map, int i)
 				return (1);
 			}
 		}
+		else if (map->s_path[i] == ' ' || map->s_path[i] == '\t')
+			return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid south texture\n",
+				2), 1);
         else if (!map->s_path[i + 1])
             return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid south texture\n",
                 2), 1);
@@ -75,7 +75,7 @@ int check_east(t_map *map, int i)
 		i++;
 	while(map->e_path[i])
 	{
-		if (map->e_path[i] == '.')
+		if (map->e_path[i] == '.' && ft_isalpha(map->e_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->e_path[i], ".xpm"))
 				return (1);
@@ -104,13 +104,10 @@ int check_west(t_map *map, int i)
 		i++;
 	while(map->w_path[i])
 	{
-		if (map->w_path[i] == '.')
+		if (map->w_path[i] == '.' && ft_isalpha(map->w_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->w_path[i], ".xpm"))
 				return (1);
-			else if (map->w_path[i] == ' ' || map->w_path[i] == '\t')
-				return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid west texture\n",
-					2), 1);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid west texture\n",
@@ -118,6 +115,9 @@ int check_west(t_map *map, int i)
 				return (1);
 			}
 		}
+		else if (map->w_path[i] == ' ' || map->w_path[i] == '\t')
+			return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid west texture\n",
+				2), 1);
         else if (!map->w_path[i + 1])
             return (ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid west texture\n",
                 2), 1);
