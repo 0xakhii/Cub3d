@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 00:00:21 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/14 23:37:04 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/15 02:29:57 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int check_north(t_map *map, int i)
 		if (map->n_path[i] == '.' && ft_isalpha(map->n_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->n_path[i], ".xpm"))
-				return (1);
+				return (0);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid north texture\n",
@@ -50,7 +50,7 @@ int check_south(t_map *map, int i)
 		if (map->s_path[i] == '.' && ft_isalpha(map->s_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->s_path[i], ".xpm"))
-				return (1);
+				return (0);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid south texture\n",
@@ -78,7 +78,7 @@ int check_east(t_map *map, int i)
 		if (map->e_path[i] == '.' && ft_isalpha(map->e_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->e_path[i], ".xpm"))
-				return (1);
+				return (0);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid east texture\n",
@@ -107,7 +107,7 @@ int check_west(t_map *map, int i)
 		if (map->w_path[i] == '.' && ft_isalpha(map->w_path[i + 1]))
 		{
 			if (!ft_strcmp(&map->w_path[i], ".xpm"))
-				return (1);
+				return (0);
 			else
 			{
 				ft_putstr_fd("\033[1;31mCube3D :\033[0;0m Invalid west texture\n",

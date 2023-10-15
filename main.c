@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 01:23:38 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/15 02:02:39 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/15 02:43:19 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,12 @@ int	main(int ac, char **av)
 			map_init(map);
 			map_fill(map->map, map);
 			if (map_check(map))
-			{	
+			{
 				free_map(&map);
 				return (1);
 			}
-			map_printing(map);
+			printf("\033[1;32mCube3D:\033[0;0m Map is valid\n");
+			// map_printing(map);
 		}
 		free_map(&map);
 	}

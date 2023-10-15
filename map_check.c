@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 23:28:31 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/14 23:46:48 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/15 02:30:27 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int	check_for_colors(t_map *map)
 	if (!map->c_color)
 		return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mInvalid celling color",
 				2), 1);
-	if (check_f_color(map) && check_c_color(map))
-		return (1);
 	return (0);
 }
 
@@ -122,7 +120,8 @@ int	map_check(t_map *map)
 	i = 0;
 	j = 0;
 	if (check_for_textures(map) || check_directions(map)
-		|| check_for_colors(map) || check_chars(map))
+		|| check_for_colors(map) || check_c_color(map)
+			|| check_f_color(map) || check_chars(map))
 		return (1);
 	while(map->map_clone[i])
 	{
