@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 23:28:31 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/15 02:30:27 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/17 04:13:40 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ int	check_ups(t_map *map, int i, int j)
 	if (k > 0 && map->map_clone[k][j] != '1' && map->map_clone[k][j] != 'x')
 		return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mUnclosed wall", 2), 1);
 	k = i + 1;
-	if (k < map->map_len && map->map_clone[k][j] != '1' && map->map_clone[k][j] != 'x'
-		&& map->map_clone[k][j] != '0')
+	if (k < map->map_len && map->map_clone[k][j] != '1' && map->map_clone[k][j] != 'x')
 		return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mUnclosed wall", 2), 1);
 	return (0);
 }
@@ -106,8 +105,7 @@ int	check_sides(t_map *map, int j, int i)
 	if (k > 0 && map->map_clone[i][k] != '1' && map->map_clone[i][k] != 'x')	
 		return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mUnclosed wall", 2), 1);
 	k = j + 1;
-	if (k > 0 && k < map->max_line && map->map_clone[i][k] != '1' && map->map_clone[i][k] != 'x'
-		&& map->map_clone[i][k] != '0')
+	if (k > 0 && k < map->max_line && map->map_clone[i][k] != '1' && map->map_clone[i][k] != 'x')
 		return (ft_putendl_fd("\033[1;31mError\nCub3D: \033[0mUnclosed wall", 2), 1);
 	return (0);
 }
@@ -120,8 +118,9 @@ int	map_check(t_map *map)
 	i = 0;
 	j = 0;
 	if (check_for_textures(map) || check_directions(map)
-		|| check_for_colors(map) || check_c_color(map)
-			|| check_f_color(map) || check_chars(map))
+		|| check_for_colors(map) || check_chars(map))
+		return (1);
+	if (check_color(map->c_color) || check_color(map->f_color))
 		return (1);
 	while(map->map_clone[i])
 	{

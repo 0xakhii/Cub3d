@@ -6,7 +6,7 @@
 /*   By: ojamal <ojamal@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 03:02:46 by ojamal            #+#    #+#             */
-/*   Updated: 2023/10/15 02:42:16 by ojamal           ###   ########.fr       */
+/*   Updated: 2023/10/16 22:35:11 by ojamal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	check_directions(t_map *map)
 	int	i;
 
 	i = 0;
-	if (check_east(map, i) && check_west(map, i)
-		&& check_north(map, i) && check_south(map, i))
+	if (check_path(map->n_path, i) || check_path(map->s_path, i)
+		|| check_path(map->w_path, i) || check_path(map->e_path, i))
 		return (1);
 	return (0);
 }
